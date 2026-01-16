@@ -8,7 +8,7 @@ function checkWin(){
     const values = [];
     cells.forEach(cell => values.push(cell.textContent));
 
-    const winLines = [
+    const winLines = [  //every winning index possible
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -19,7 +19,17 @@ function checkWin(){
         [2, 4, 6],
     ];
 
-    for (const )
+    for (const line of winLines){
+        const [a, b, c] = line;
+
+        const mark = values[a];
+        if (mark === "") continue;
+
+        if (mark === values[b] && mark === values[c]){
+            return mark;
+        }
+    }
+    return null;
     
 }
 
@@ -40,6 +50,9 @@ cells.forEach(cell => {  //loop over cells (click handler)
         }
             statusText.textContent = currentPlayer + "'s turn";
         
+    const winner = checkWin();
+    console.log(winner);
 
     });
+    
 });
